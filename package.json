@@ -1,0 +1,14 @@
+{
+  "name": "mol-n",
+  "version": "0.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mol-project/mol-n.git"
+  },
+  "author": "magaly@flkt.mx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mol-project/mol-n/issues"
+  }
+}
