@@ -1,6 +1,6 @@
 {
-  "name": "mol-n",
-  "version": "0.0.0",
+  "name": "mol-normalize",
+  "version": "1.0.0",
   "description": "small normalize and customize file with sass preprocessor for css",
   "scripts": {
     "mol": "sass scss/n.scss:mol/n.min.css --style compressed",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/mol-project/mol-n.git"
   },
-  "author": "magaly@flkt.mx",
+  "author": "flkt.crnpio@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mol-project/mol-n/issues"
