@@ -1,0 +1,618 @@
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+@function color-contrast($color, $bg) {
+  @if lightness($color) > 50 {
+    @if lightness($bg) > 50 {
+      @return false;
+    }
+  }
+  @else {
+    @if lightness($bg) < 50 {
+      @return false;
+    }
+  }
+  @return true;
+}
+
+%m-font-base {
+  color: map-get($m-colors, "font");
+  font-family: $m-font-family;
+  font-size: $m-font-size;
+  line-height: $m-line-height;
+  font-weight: $m-font-weight;
+  text-rendering: optimizeLegibility;
+}
+
+%m-interact-base {
+  cursor: pointer;
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  text-rendering: optimizeLegibility;
+  transition: all .27s ease-in-out;
+  &:active,
+  &:hover,
+  &:focus {
+    outline-width: 0;
+  }
+}
+
+%m-input-base {
+  @extend %m-font-base;
+  display: inline-block;
+  margin: 2px 0;
+  padding: .4em .8em;
+  max-width: calc(100% - 1.6em);
+  transition: all .27s ease-in-out;
+  &:active,
+  &:hover,
+  &:focus {
+    outline-width: 0;
+  }
+}
+
+html,
+body {
+  box-sizing: border-box;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @extend %m-font-base;
+  background: map-get($m-colors, "background");
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $m-h-family;
+  font-style: $m-h-style;
+  font-weight: $m-h-weight;
+  letter-spacing: $m-h-spacing;
+  line-height: $m-h-height;
+  text-rendering: optimizeLegibility;
+  text-transform: $m-h-transform;
+}
+
+h1 {
+  font-size: $m-h-size * 2.3;
+}
+h2 {
+  font-size: $m-h-size * 1.7;
+}
+h3 {
+  font-size: $m-h-size * 1.4;
+}
+h4 {
+  font-size: $m-h-size * 1.25;
+}
+h5 {
+  font-size: $m-h-size * 1.1;
+}
+h6 {
+  font-size: $m-h-size;
+}
+@media only screen and (min-width: map-deep-get($m-queries, "tablet", "since")) {
+  h1 {
+    font-size: $m-h-size * 4.4;
+  }
+  h2 {
+    font-size: $m-h-size * 2.9;
+  }
+  h3 {
+    font-size: $m-h-size * 2.1;
+  }
+  h4 {
+    font-size: $m-h-size * 1.5;
+  }
+  h5 {
+    font-size: $m-h-size * 1.2;
+  }
+  h6 {
+    font-size: $m-h-size;
+  }
+}
+
+a {
+  @extend %m-interact-base;
+  color: map-get($m-colors, "primary");
+  display: inline;
+  font-size: inherit;
+  font-weight: normal;
+  text-decoration: underline;
+}
+@media only screen and (min-width: map-deep-get($m-queries, "laptop", "since")) {
+  a {
+    $link-color: adjust-color(map-get($m-colors, "primary"), $saturation: 0%, $lightness: 27%);
+    $link-color-hover: map-get($m-colors, "primary");
+    @if color-contrast(map-get($m-colors, "primary"), map-get($m-colors, "background")) == false {
+      $link-color: map-get($m-colors, "primary");
+      $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
+    }
+    @if color-contrast(black, map-get($m-colors, "background")) == false {
+      $link-color: map-get($m-colors, "primary");
+      $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
+    }
+    color: $link-color;
+    text-decoration: underline;
+    &.active,
+    &:active,
+    &:focus,
+    &.hover,
+    &:hover {
+      color: $link-color-hover;
+      text-decoration: underline;
+    }
+  }
+}
+
+article,
+aside,
+blockquote,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+details {
+  margin: $m-line-height 0 $m-line-height * 2;
+}
+
+summary {
+  @extend %m-interact-base;
+  color: mix(map-get($m-colors, "font"), map-get($m-colors, "background"), 70%);
+  display: list-item;
+  margin: $m-line-height 0 0;
+  &:hover {
+    color: map-get($m-colors, "font");
+  }
+}
+
+blockquote {
+  margin: $m-line-height * 2;
+  font-family: $m-em-family;
+  font-style: italic;
+  font-size: $m-font-size * 1.23;
+  line-height: $m-line-height;
+}
+
+form,
+figure {
+  margin: $m-line-height 0;
+}
+
+figcaption {
+  font-size: .8em;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+audio,
+canvas,
+iframe,
+video {
+  vertical-align: middle;
+}
+
+audio,
+video {
+	@extend %m-interact-base;
+}
+
+iframe {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+abbr,
+ins {
+  text-decoration: none;
+}
+
+abbr {
+  border-bottom: 1px dotted map-get($m-colors, "font");
+  cursor: help;
+}
+
+ins {
+  border-bottom: 1px dashed map-get($m-colors, "font");
+}
+
+b,
+strong {
+  font-weight: 900;
+}
+
+dfn,
+i,
+em,
+cite,
+q {
+  font-family: $m-em-family;
+  font-style: italic;
+}
+
+small {
+  font-size: .7em;
+}
+
+sub,
+sup {
+  font-size: .7em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+sup {
+  top: -.5em;
+}
+
+code,
+kbd,
+samp,
+var,
+mark {
+  font-family: $m-code-family;
+  font-size: .9em;
+  font-weight: normal;
+  padding: .4em .9em;
+  display: inline-block;
+  margin: .2em 0;
+}
+
+code,
+kbd,
+pre,
+samp {
+  background: mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 90%);
+}
+
+kbd {
+  color: mix(map-get($m-colors, "font"), map-get($m-colors, "primary"), 50%);
+  background: map-get($m-colors, "font");
+  color: map-get($m-colors, "background");
+  &::before {
+    content: ">_ ";
+    color: map-get($m-colors, "primary");
+  }
+}
+
+samp {
+  color: mix(map-get($m-colors, "font"), map-get($m-colors, "primary"), 50%);
+  &::before {
+    content: ">> ";
+    color: map-get($m-colors, "primary");
+  }
+}
+
+var {
+  color: mix(map-get($m-colors, "font"), map-get($m-colors, "primary"), 50%);
+}
+
+mark {
+  background: mix(yellow, map-get($m-colors, "background"), 85%);
+}
+
+pre {
+  font-family: $m-code-family;
+  font-size: .9em;
+  font-weight: normal;
+  margin: $m-line-height 0;
+  padding: 1em;
+  display: block;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  margin: $m-line-height*2 0;
+}
+
+img {
+  border-style: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+label {
+  display: inline-block;
+  line-height: $m-line-height;
+  margin-top: 2px;
+  padding-top: .4em;
+  padding-bottom: .4em;
+}
+
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="file"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+textarea,
+select {
+  @extend %m-input-base;
+  background: transparent;
+  border: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  border-radius: 1px;
+  color: map-get($m-colors, "font");
+  &.hover,
+  &:active,
+  &:hover,
+  &:focus {
+    box-shadow: 0;
+    outline: 0;
+    text-shadow: 0;
+    border-color: map-get($m-colors, "font");
+  }
+}
+
+output {
+  @extend %m-input-base;
+  border-bottom: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  vertical-align: bottom;
+}
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 50%) 50%),
+    linear-gradient(-45deg, transparent 50%, mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 50%) 50%);
+  background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 30px;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  @extend %m-input-base;
+  @extend %m-interact-base;
+  border-radius: 100rem;
+  border-style: solid;
+  border-width: 1px;
+  $btn-background: map-get($m-colors, "background");
+  $btn-border: map-get($m-colors, "primary");
+  $btn-color: map-get($m-colors, "primary");
+  $btn-background-hover: map-get($m-colors, "primary");
+  $btn-border-hover: map-get($m-colors, "primary");
+  $btn-color-hover: map-get($m-colors, "background");
+  @if color-contrast(map-get($m-colors, "primary"), map-get($m-colors, "background")) == false {
+    $btn-background: map-get($m-colors, "primary");
+    $btn-border: map-get($m-colors, "primary");
+
+    $btn-color: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 50%);
+    $btn-background-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -13%);
+    $btn-border-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -13%);
+    $btn-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 50%);
+    @if color-contrast(black, map-get($m-colors, "primary")) == false {
+      $btn-color: adjust-color(map-get($m-colors, "primary"), $saturation: 40%, $lightness: 40%);
+      $btn-background-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 10%);
+      $btn-border-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 10%);
+      $btn-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 100%);
+    }
+  }
+
+  background: $btn-background;
+  border-color: $btn-border;
+  color: $btn-color;
+  padding-left: 1.4em;
+  padding-right: 1.4em;
+  &.active,
+  &:active,
+  &.hover,
+  &:hover,
+  &:focus {
+    background: $btn-background-hover;
+    border-color: $btn-border-hover;
+    color: $btn-color-hover;
+  }
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+textarea::-moz-focus-inner,
+select::-moz-focus-inner {
+  border: 0;
+  box-shadow: 0;
+  outline: 0;
+  text-shadow: 0;
+}
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 map-get($m-colors, "font");
+}
+
+fieldset {
+  border: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  margin: $m-line-height 0;
+  padding: 0.35em 0.7em 0.7em;
+  max-width: calc(100% - 1.4em);
+  display: block;
+}
+
+[type="checkbox"] + label,
+[type="radio"] + label {
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-left: - #{$m-line-height};
+  padding-left: $m-line-height * 1.1;
+  overflow: visible;
+  position: relative;
+  &::before {
+    box-sizing: border-box;
+    background: map-get($m-colors, "background");
+    border: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+    display: block;
+    position: absolute;
+    height: 1.3em;
+    width: 1.3em;
+    left: 0;
+    top: $m-line-height * .3;
+    content: "";
+  }
+}
+[type="checkbox"]:checked + label::before ,
+[type="radio"]:checked + label::before {
+  border-color: map-get($m-colors, "primary");
+  box-shadow: inset 0 0 0 .3em map-get($m-colors, "primary");
+}
+[type="radio"] + label::before {
+  border-radius: 1em;
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+tbody tr,
+tfoot tr {
+  border-top: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+}
+th, td {
+  padding: .4em .8em;
+}
+
+.controls,
+[aria-controls] {
+  cursor: pointer !important;
+}
+
+.disabled,
+[aria-disabled],
+[disabled],
+[disabled]:active,
+[disabled]:focus,
+[disabled]:hover,
+.readonly,
+[readonly] {
+  pointer-events: none !important;
+}
+
+.hidden,
+[hidden] {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+::-webkit-input-placeholder {
+  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map-get($m-colors, "background")) {
+    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  }
+}
+::-moz-placeholder {
+  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map-get($m-colors, "background")) {
+    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  }
+}
+:-ms-input-placeholder {
+  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map-get($m-colors, "background")) {
+    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  }
+}
+:-moz-placeholder {
+  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map-get($m-colors, "background")) {
+    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  }
+}
+
+::-webkit-selection {
+  background-color: map-get($m-colors, "font");
+  color: map-get($m-colors, "background");
+  text-shadow: none;
+}
+::-moz-selection {
+  background-color: map-get($m-colors, "font");
+  color: map-get($m-colors, "background");
+  text-shadow: none;
+}
+::selection {
+  background-color: map-get($m-colors, "font");
+  color: map-get($m-colors, "background");
+  text-shadow: none;
+}
