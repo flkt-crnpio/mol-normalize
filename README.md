@@ -1,4 +1,4 @@
-## mol n
+## mol normalize
 normalize css file a.k.a. para que se vean igual las etiquetas de html en todos los navegadores. tiene unas pocas variables para poder editar el estilo general como el color primario o la tipografía y media queries para cambiar el tamaño de los títulos.
 
 ### scripts
