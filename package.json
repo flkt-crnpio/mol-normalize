@@ -1,7 +1,13 @@
 {
   "name": "mol-n",
   "version": "0.0.0",
-  "description": "",
+  "description": "small normalize and customize file with sass preprocessor for css",
+  "scripts": {
+    "mol": "sass scss/n.scss:mol/n.min.css --style compressed",
+    "dev": "npm run scss | npm run start",
+    "start": "browser-sync start --server 'dev' --files 'dev'",
+    "scss": "sass --watch scss/n.scss:dev/n.css --style expanded"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mol-project/mol-n.git"
@@ -10,5 +16,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mol-project/mol-n/issues"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "node-sass": "^4.13.1"
   }
 }
