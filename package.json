@@ -10,18 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mol-project/mol-n.git"
+    "url": "git+https://github.com/flkt-crnpio/mol-normalize"
   },
   "author": "flkt.crnpio@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mol-project/mol-n/issues"
+    "url": "https://github.com/flkt-crnpio/mol-normalize/issues"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "node-sass": "^4.13.1"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  }
+  "homepage": "https://github.com/flkt-crnpio/mol-normalize#readme",
+  "main": "mol/n.min.css"
 }
