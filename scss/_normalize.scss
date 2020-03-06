@@ -127,36 +127,26 @@ h6 {
 
 a {
   @extend %m-interact-base;
-  color: map-get($m-colors, "primary");
-  display: inline;
-  font-size: inherit;
-  font-weight: normal;
-  text-decoration: underline;
-}
-@media only screen and (min-width: map-deep-get($m-queries, "laptop", "since")) {
-  a {
-    $link-color: adjust-color(map-get($m-colors, "primary"), $saturation: 0%, $lightness: 27%);
-    $link-color-hover: map-get($m-colors, "primary");
-    @if color-contrast(map-get($m-colors, "primary"), map-get($m-colors, "background")) == false {
-      $link-color: map-get($m-colors, "primary");
-      $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
-    }
-    @if color-contrast(black, map-get($m-colors, "background")) == false {
-      $link-color: map-get($m-colors, "primary");
-      $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
-    }
-    color: $link-color;
-    text-decoration: underline;
-    &.active,
-    &:active,
-    &:focus,
-    &.hover,
-    &:hover {
-      color: $link-color-hover;
-      text-decoration: underline;
-    }
+  $link-color: adjust-color(map-get($m-colors, "primary"), $saturation: 0%, $lightness: 27%);
+  $link-color-hover: map-get($m-colors, "primary");
+  @if color-contrast(map-get($m-colors, "primary"), map-get($m-colors, "background")) == false {
+    $link-color: map-get($m-colors, "primary");
+    $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
+  }
+  @if color-contrast(black, map-get($m-colors, "background")) == false {
+    $link-color: map-get($m-colors, "primary");
+    $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
+  }
+  color: $link-color;
+  &.active,
+  &:active,
+  &:focus,
+  &.hover,
+  &:hover {
+    color: $link-color-hover;
   }
 }
+
 
 article,
 aside,
