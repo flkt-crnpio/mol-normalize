@@ -3,7 +3,7 @@ normalize css file a.k.a. para que se vean igual las etiquetas de html en todos 
 
 ### scripts
 * para obtener el archivo minificado `npm run mol`
-* para ver los cambios locales `npm run dev`
+* para ver los cambios locales `npm run docs`
 
 ### variables
 ```text
