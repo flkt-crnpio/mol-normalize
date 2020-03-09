@@ -350,10 +350,10 @@ var,
 mark {
   display: inline-block;
   font-family: monospace;
-  font-size: 0.9em;
+  font-size: 0.85em;
   font-weight: normal;
   line-height: inherit;
-  padding: 0 0.3em;
+  padding: 0.05em 0.2em;
 }
 
 code,
