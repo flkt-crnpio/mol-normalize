@@ -216,22 +216,11 @@ h6 {
 }
 a {
   color: #19efaf;
-  display: inline;
-  font-size: inherit;
-  font-weight: normal;
-  text-decoration: underline;
+}
+a.active, a:active, a:focus, a.hover, a:hover {
+  color: #00b17c;
 }
 
-@media only screen and (min-width: 1025px) {
-  a {
-    color: #19efaf;
-    text-decoration: underline;
-  }
-  a.active, a:active, a:focus, a.hover, a:hover {
-    color: #00b17c;
-    text-decoration: underline;
-  }
-}
 article,
 aside,
 blockquote,
@@ -359,12 +348,12 @@ kbd,
 samp,
 var,
 mark {
+  display: inline-block;
   font-family: monospace;
   font-size: 0.9em;
   font-weight: normal;
-  padding: 0.4em 0.9em;
-  display: inline-block;
-  margin: 0.2em 0;
+  line-height: inherit;
+  padding: 0 0.3em;
 }
 
 code,

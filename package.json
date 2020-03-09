@@ -4,9 +4,9 @@
   "description": "small normalize and customize file with sass preprocessor for css",
   "scripts": {
     "mol": "sass scss/n.scss:mol/n.min.css --style compressed",
-    "dev": "npm run scss | npm run start",
-    "start": "browser-sync start --server 'dev' --files 'dev'",
-    "scss": "sass --watch scss/n.scss:dev/n.css --style expanded"
+    "docs": "npm run scss | npm run start",
+    "start": "browser-sync start --server 'docs' --files 'docs'",
+    "scss": "sass --watch scss/n.scss:docs/n.css --style expanded"
   },
   "repository": {
     "type": "git",
