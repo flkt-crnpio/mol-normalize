@@ -1,6 +1,6 @@
 {
   "name": "mol-normalize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "small normalize and customize file with sass preprocessor for css",
   "scripts": {
     "mol": "sass scss/n.scss:mol/n.min.css --style compressed",
