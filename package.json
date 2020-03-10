@@ -22,5 +22,6 @@
     "node-sass": "^4.13.1"
   },
   "homepage": "https://github.com/flkt-crnpio/mol-normalize#readme",
-  "main": "mol/n.min.css"
+  "main": "mol/n.min.css",
+  "keywords": ["mol-project", "mol-normalize", "normalize", "css", "scss", "flkt"]
 }
