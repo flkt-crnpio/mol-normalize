@@ -2,8 +2,9 @@
 normalize css file a.k.a. para que se vean igual las etiquetas de html en todos los navegadores. tiene unas pocas variables para poder editar el estilo general como el color primario o la tipografía y media queries para cambiar el tamaño de los títulos.
 
 ### scripts
-* para obtener el archivo minificado `npm run mol`
-* para ver los cambios locales `npm run docs`
+* para ver los cambios locales `npm start`
+* para actualizar el archivo de pruebas docs/n.css `npm run scss`
+* para obtener el archivo minificado mol/n.min.css `npm run mol`
 
 ### variables
 ```text
@@ -57,7 +58,7 @@ mol-n/
 ├── mol/
 │   ├── n.min.css
 │   └── n.min.css.map
-├── dev/
+├── docs/
 │   ├── index.html
 │   ├── n.css
 │   └── n.css.map
@@ -68,5 +69,4 @@ mol-n/
 ```
 
 ## problemas conocidos
-
 (//▽//) El input type search funciona como un input type text, para mantener el estilo general de los inputs
