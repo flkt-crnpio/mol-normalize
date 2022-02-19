@@ -1,6 +1,6 @@
 {
   "name": "mol-normalize",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "small normalize and customize file with sass preprocessor for css",
   "scripts": {
     "start": "concurrently 'npm run reload' 'npm run scss' ",
@@ -25,9 +25,9 @@
     "url": "https://github.com/flkt-crnpio/mol-normalize/issues"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0",
-    "node-sass": "^7.0.0",
-    "reload": "^3.0.4"
+    "concurrently": "^7.0.0",
+    "reload": "^3.0.4",
+    "sass": "^1.49.8"
   },
   "homepage": "https://flkt-crnpio.github.io/mol-normalize/",
   "main": "mol/n.min.css",
