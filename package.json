@@ -15,6 +15,11 @@
     ],
     "ext": "js,css,html"
   },
+  "files": [
+    "mol",
+    "scss",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flkt-crnpio/mol-normalize"
@@ -26,18 +31,18 @@
   },
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "reload": "^3.0.4",
-    "sass": "^1.49.8"
+    "reload": "^3.0.4"
   },
   "homepage": "https://flkt-crnpio.github.io/mol-normalize/",
   "main": "mol/n.min.css",
   "keywords": [
-    "mol-project",
-    "mol-normalize",
     "normalize",
     "css",
     "scss",
     "sass",
     "flkt"
-  ]
+  ],
+  "dependencies": {
+    "sass": "1.54.0"
+  }
 }
