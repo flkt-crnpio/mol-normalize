@@ -1,6 +1,6 @@
 {
   "name": "mol-normalize",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "small normalize and customize file with sass preprocessor for css",
   "scripts": {
     "start": "concurrently 'npm run reload' 'npm run scss' ",
