@@ -29,10 +29,6 @@
   "bugs": {
     "url": "https://github.com/flkt-crnpio/mol-normalize/issues"
   },
-  "devDependencies": {
-    "concurrently": "^7.0.0",
-    "reload": "^3.0.4"
-  },
   "homepage": "https://flkt-crnpio.github.io/mol-normalize/",
   "main": "mol/n.min.css",
   "keywords": [
@@ -43,6 +39,10 @@
     "flkt"
   ],
   "dependencies": {
-    "sass": "1.54.0"
+    "sass": "^1.83.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.1",
+    "reload": "^3.3.0"
   }
 }

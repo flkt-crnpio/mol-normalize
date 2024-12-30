@@ -1,18 +1,15 @@
-@function map-deep-get($map, $keys...) {
-  @each $key in $keys {
-    $map: map-get($map, $key);
-  }
-  @return $map;
-}
+@use 'sass:map';
+@use 'sass:color';
+@use './_vars' as vars;
 
 @function color-contrast($color, $bg) {
-  @if lightness($color) > 50 {
-    @if lightness($bg) > 50 {
+  @if color.channel($color, 'lightness', $space: hsl) > 50 {
+    @if color.channel($bg, 'lightness', $space: hsl) > 50 {
       @return false;
     }
   }
   @else {
-    @if lightness($bg) < 50 {
+    @if color.channel($bg, 'lightness', $space: hsl) < 50 {
       @return false;
     }
   }
@@ -20,11 +17,11 @@
 }
 
 %m-font-base {
-  color: map-get($m-colors, "font");
-  font-family: $m-font-family;
-  font-size: $m-font-size;
-  line-height: $m-line-height;
-  font-weight: $m-font-weight;
+  color: map.get(vars.$m-colors, "font");
+  font-family: vars.$m-font-family;
+  font-size: vars.$m-font-size;
+  line-height: vars.$m-line-height;
+  font-weight: vars.$m-font-weight;
   text-rendering: optimizeLegibility;
 }
 
@@ -66,7 +63,7 @@ body {
 
 body {
   @extend %m-font-base;
-  background: map-get($m-colors, "background");
+  background: map.get(vars.$m-colors, "background");
   margin: 0;
   padding: 0;
 }
@@ -77,65 +74,65 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $m-h-family;
-  font-style: $m-h-style;
-  font-weight: $m-h-weight;
-  letter-spacing: $m-h-spacing;
-  line-height: $m-h-height;
+  font-family: vars.$m-h-family;
+  font-style: vars.$m-h-style;
+  font-weight: vars.$m-h-weight;
+  letter-spacing: vars.$m-h-spacing;
+  line-height: vars.$m-h-height;
   text-rendering: optimizeLegibility;
-  text-transform: $m-h-transform;
+  text-transform: vars.$m-h-transform;
 }
 
 h1 {
-  font-size: $m-h-size * 2.3;
+  font-size: vars.$m-h-size * 2.3;
 }
 h2 {
-  font-size: $m-h-size * 1.7;
+  font-size: vars.$m-h-size * 1.7;
 }
 h3 {
-  font-size: $m-h-size * 1.4;
+  font-size: vars.$m-h-size * 1.4;
 }
 h4 {
-  font-size: $m-h-size * 1.25;
+  font-size: vars.$m-h-size * 1.25;
 }
 h5 {
-  font-size: $m-h-size * 1.1;
+  font-size: vars.$m-h-size * 1.1;
 }
 h6 {
-  font-size: $m-h-size;
+  font-size: vars.$m-h-size;
 }
-@media only screen and (min-width: map-deep-get($m-queries, "tablet", "since")) {
+@media only screen and (min-width: map.get(vars.$m-queries, "tablet", "since")) {
   h1 {
-    font-size: $m-h-size * 4.4;
+    font-size: vars.$m-h-size * 4.4;
   }
   h2 {
-    font-size: $m-h-size * 2.9;
+    font-size: vars.$m-h-size * 2.9;
   }
   h3 {
-    font-size: $m-h-size * 2.1;
+    font-size: vars.$m-h-size * 2.1;
   }
   h4 {
-    font-size: $m-h-size * 1.5;
+    font-size: vars.$m-h-size * 1.5;
   }
   h5 {
-    font-size: $m-h-size * 1.2;
+    font-size: vars.$m-h-size * 1.2;
   }
   h6 {
-    font-size: $m-h-size;
+    font-size: vars.$m-h-size;
   }
 }
 
 a {
   @extend %m-interact-base;
-  $link-color: adjust-color(map-get($m-colors, "primary"), $saturation: 0%, $lightness: 27%);
-  $link-color-hover: map-get($m-colors, "primary");
-  @if color-contrast(map-get($m-colors, "primary"), map-get($m-colors, "background")) == false {
-    $link-color: map-get($m-colors, "primary");
-    $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
+  $link-color: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 0%, $lightness: 27%);
+  $link-color-hover: map.get(vars.$m-colors, "primary");
+  @if color-contrast(map.get(vars.$m-colors, "primary"), map.get(vars.$m-colors, "background")) == false {
+    $link-color: map.get(vars.$m-colors, "primary");
+    $link-color-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: -17%);
   }
-  @if color-contrast(black, map-get($m-colors, "background")) == false {
-    $link-color: map-get($m-colors, "primary");
-    $link-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -17%);
+  @if color-contrast(black, map.get(vars.$m-colors, "background")) == false {
+    $link-color: map.get(vars.$m-colors, "primary");
+    $link-color-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: -17%);
   }
   color: $link-color;
   &.active,
@@ -164,30 +161,30 @@ section {
 }
 
 details {
-  margin: $m-line-height 0 $m-line-height * 2;
+  margin: vars.$m-line-height 0 vars.$m-line-height * 2;
 }
 
 summary {
   @extend %m-interact-base;
-  color: mix(map-get($m-colors, "font"), map-get($m-colors, "background"), 70%);
+  color: color.mix(map.get(vars.$m-colors, "font"), map.get(vars.$m-colors, "background"), 70%);
   display: list-item;
-  margin: $m-line-height 0 0;
+  margin: vars.$m-line-height 0 0;
   &:hover {
-    color: map-get($m-colors, "font");
+    color: map.get(vars.$m-colors, "font");
   }
 }
 
 blockquote {
-  margin: $m-line-height * 2;
-  font-family: $m-em-family;
+  margin: vars.$m-line-height * 2;
+  font-family: vars.$m-em-family;
   font-style: italic;
-  font-size: $m-font-size * 1.23;
-  line-height: $m-line-height;
+  font-size: vars.$m-font-size * 1.23;
+  line-height: vars.$m-line-height;
 }
 
 form,
 figure {
-  margin: $m-line-height 0;
+  margin: vars.$m-line-height 0;
 }
 
 figcaption {
@@ -234,12 +231,12 @@ ins {
 }
 
 abbr {
-  border-bottom: 1px dotted map-get($m-colors, "font");
+  border-bottom: 1px dotted map.get(vars.$m-colors, "font");
   cursor: help;
 }
 
 ins {
-  border-bottom: 1px dashed map-get($m-colors, "font");
+  border-bottom: 1px dashed map.get(vars.$m-colors, "font");
 }
 
 b,
@@ -252,7 +249,7 @@ i,
 em,
 cite,
 q {
-  font-family: $m-em-family;
+  font-family: vars.$m-em-family;
   font-style: italic;
 }
 
@@ -282,7 +279,7 @@ samp,
 var,
 mark {
   display: inline-block;
-  font-family: $m-code-family;
+  font-family: vars.$m-code-family;
   font-size: .85em;
   font-weight: normal;
   line-height: inherit;
@@ -293,40 +290,40 @@ code,
 kbd,
 pre,
 samp {
-  background: mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 90%);
+  background: color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 90%);
 }
 
 kbd {
-  color: mix(map-get($m-colors, "font"), map-get($m-colors, "primary"), 50%);
-  background: map-get($m-colors, "font");
-  color: map-get($m-colors, "background");
+  color: color.mix(map.get(vars.$m-colors, "font"), map.get(vars.$m-colors, "primary"), 50%);
+  background: map.get(vars.$m-colors, "font");
+  color: map.get(vars.$m-colors, "background");
   &::before {
     content: ">_ ";
-    color: map-get($m-colors, "primary");
+    color: map.get(vars.$m-colors, "primary");
   }
 }
 
 samp {
-  color: mix(map-get($m-colors, "font"), map-get($m-colors, "primary"), 50%);
+  color: color.mix(map.get(vars.$m-colors, "font"), map.get(vars.$m-colors, "primary"), 50%);
   &::before {
     content: ">> ";
-    color: map-get($m-colors, "primary");
+    color: map.get(vars.$m-colors, "primary");
   }
 }
 
 var {
-  color: mix(map-get($m-colors, "font"), map-get($m-colors, "primary"), 50%);
+  color: color.mix(map.get(vars.$m-colors, "font"), map.get(vars.$m-colors, "primary"), 50%);
 }
 
 mark {
-  background: mix(yellow, map-get($m-colors, "background"), 85%);
+  background: color.mix(yellow, map.get(vars.$m-colors, "background"), 85%);
 }
 
 pre {
-  font-family: $m-code-family;
+  font-family: vars.$m-code-family;
   font-size: .9em;
   font-weight: normal;
-  margin: $m-line-height 0;
+  margin: vars.$m-line-height 0;
   padding: 1em;
   display: block;
   overflow: auto;
@@ -336,11 +333,11 @@ pre {
 
 hr {
   border: none;
-  border-top: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  border-top: 1px solid color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 70%);
   box-sizing: content-box;
   height: 0;
   overflow: visible;
-  margin: $m-line-height*2 0;
+  margin: vars.$m-line-height*2 0;
 }
 
 img {
@@ -357,7 +354,7 @@ svg:not(:root) {
 
 label {
   display: inline-block;
-  line-height: $m-line-height;
+  line-height: vars.$m-line-height;
   margin-top: 2px;
   padding-top: .4em;
   padding-bottom: .4em;
@@ -381,9 +378,9 @@ textarea,
 select {
   @extend %m-input-base;
   background: transparent;
-  border: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  border: 1px solid color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 70%);
   border-radius: 1px;
-  color: map-get($m-colors, "font");
+  color: map.get(vars.$m-colors, "font");
   &.hover,
   &:active,
   &:hover,
@@ -391,13 +388,13 @@ select {
     box-shadow: 0;
     outline: 0;
     text-shadow: 0;
-    border-color: map-get($m-colors, "font");
+    border-color: map.get(vars.$m-colors, "font");
   }
 }
 
 output {
   @extend %m-input-base;
-  border-bottom: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  border-bottom: 1px solid color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 70%);
   vertical-align: bottom;
 }
 
@@ -406,8 +403,8 @@ select {
   -moz-appearance: none;
   -webkit-appearance: none;
   background-image:
-    linear-gradient(45deg, transparent 50%, mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 50%) 50%),
-    linear-gradient(-45deg, transparent 50%, mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 50%) 50%);
+    linear-gradient(45deg, transparent 50%, color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 50%) 50%),
+    linear-gradient(-45deg, transparent 50%, color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 50%) 50%);
   background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
@@ -423,25 +420,25 @@ input[type="submit"] {
   border-radius: 100rem;
   border-style: solid;
   border-width: 1px;
-  $btn-background: map-get($m-colors, "background");
-  $btn-border: map-get($m-colors, "primary");
-  $btn-color: map-get($m-colors, "primary");
-  $btn-background-hover: map-get($m-colors, "primary");
-  $btn-border-hover: map-get($m-colors, "primary");
-  $btn-color-hover: map-get($m-colors, "background");
-  @if color-contrast(map-get($m-colors, "primary"), map-get($m-colors, "background")) == false {
-    $btn-background: map-get($m-colors, "primary");
-    $btn-border: map-get($m-colors, "primary");
+  $btn-background: map.get(vars.$m-colors, "background");
+  $btn-border: map.get(vars.$m-colors, "primary");
+  $btn-color: map.get(vars.$m-colors, "primary");
+  $btn-background-hover: map.get(vars.$m-colors, "primary");
+  $btn-border-hover: map.get(vars.$m-colors, "primary");
+  $btn-color-hover: map.get(vars.$m-colors, "background");
+  @if color-contrast(map.get(vars.$m-colors, "primary"), map.get(vars.$m-colors, "background")) == false {
+    $btn-background: map.get(vars.$m-colors, "primary");
+    $btn-border: map.get(vars.$m-colors, "primary");
 
-    $btn-color: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 50%);
-    $btn-background-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -13%);
-    $btn-border-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: -13%);
-    $btn-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 50%);
-    @if color-contrast(black, map-get($m-colors, "primary")) == false {
-      $btn-color: adjust-color(map-get($m-colors, "primary"), $saturation: 40%, $lightness: 40%);
-      $btn-background-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 10%);
-      $btn-border-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 10%);
-      $btn-color-hover: adjust-color(map-get($m-colors, "primary"), $saturation: 100%, $lightness: 100%);
+    $btn-color: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: 50%);
+    $btn-background-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: -13%);
+    $btn-border-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: -13%);
+    $btn-color-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: 50%);
+    @if color-contrast(black, map.get(vars.$m-colors, "primary")) == false {
+      $btn-color: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 40%, $lightness: 40%);
+      $btn-background-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: 10%);
+      $btn-border-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: 10%);
+      $btn-color-hover: color.adjust(map.get(vars.$m-colors, "primary"), $saturation: 100%, $lightness: 100%);
     }
   }
 
@@ -472,12 +469,12 @@ select::-moz-focus-inner {
 }
 select:-moz-focusring {
   color: transparent;
-  text-shadow: 0 0 0 map-get($m-colors, "font");
+  text-shadow: 0 0 0 map.get(vars.$m-colors, "font");
 }
 
 fieldset {
-  border: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
-  margin: $m-line-height 0;
+  border: 1px solid color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 70%);
+  margin: vars.$m-line-height 0;
   padding: 0.35em 0.7em 0.7em;
   max-width: calc(100% - 1.4em);
   display: block;
@@ -487,27 +484,27 @@ fieldset {
 [type="radio"] + label {
   box-sizing: border-box;
   cursor: pointer;
-  margin-left: - #{$m-line-height};
-  padding-left: $m-line-height * 1.1;
+  margin-left: - #{vars.$m-line-height};
+  padding-left: vars.$m-line-height * 1.1;
   overflow: visible;
   position: relative;
   &::before {
     box-sizing: border-box;
-    background: map-get($m-colors, "background");
-    border: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+    background: map.get(vars.$m-colors, "background");
+    border: 1px solid color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 70%);
     display: block;
     position: absolute;
     height: 1.3em;
     width: 1.3em;
     left: 0;
-    top: $m-line-height * .3;
+    top: vars.$m-line-height * .3;
     content: "";
   }
 }
 [type="checkbox"]:checked + label::before ,
 [type="radio"]:checked + label::before {
-  border-color: map-get($m-colors, "primary");
-  box-shadow: inset 0 0 0 .3em map-get($m-colors, "primary");
+  border-color: map.get(vars.$m-colors, "primary");
+  box-shadow: inset 0 0 0 .3em map.get(vars.$m-colors, "primary");
 }
 [type="radio"] + label::before {
   border-radius: 1em;
@@ -538,7 +535,7 @@ table {
 }
 tbody tr,
 tfoot tr {
-  border-top: 1px solid mix(map-get($m-colors, "background"), map-get($m-colors, "font"), 70%);
+  border-top: 1px solid color.mix(map.get(vars.$m-colors, "background"), map.get(vars.$m-colors, "font"), 70%);
 }
 th, td {
   padding: .4em .8em;
@@ -567,42 +564,42 @@ th, td {
 }
 
 ::-webkit-input-placeholder {
-  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
-  @if color-contrast(black, map-get($m-colors, "background")) {
-    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map.get(vars.$m-colors, "background")) {
+    color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
   }
 }
 ::-moz-placeholder {
-  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
-  @if color-contrast(black, map-get($m-colors, "background")) {
-    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map.get(vars.$m-colors, "background")) {
+    color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
   }
 }
 :-ms-input-placeholder {
-  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
-  @if color-contrast(black, map-get($m-colors, "background")) {
-    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map.get(vars.$m-colors, "background")) {
+    color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
   }
 }
 :-moz-placeholder {
-  color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
-  @if color-contrast(black, map-get($m-colors, "background")) {
-    color: adjust-color(map-get($m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
+  color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: 27%, $alpha: -.5);
+  @if color-contrast(black, map.get(vars.$m-colors, "background")) {
+    color: color.adjust(map.get(vars.$m-colors, "font"), $saturation: -27%, $lightness: -27%, $alpha: -.5);
   }
 }
 
 ::-webkit-selection {
-  background-color: map-get($m-colors, "font");
-  color: map-get($m-colors, "background");
+  background-color: map.get(vars.$m-colors, "font");
+  color: map.get(vars.$m-colors, "background");
   text-shadow: none;
 }
 ::-moz-selection {
-  background-color: map-get($m-colors, "font");
-  color: map-get($m-colors, "background");
+  background-color: map.get(vars.$m-colors, "font");
+  color: map.get(vars.$m-colors, "background");
   text-shadow: none;
 }
 ::selection {
-  background-color: map-get($m-colors, "font");
-  color: map-get($m-colors, "background");
+  background-color: map.get(vars.$m-colors, "font");
+  color: map.get(vars.$m-colors, "background");
   text-shadow: none;
 }

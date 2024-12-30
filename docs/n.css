@@ -19,7 +19,7 @@ textarea,
 select {
   color: #292321;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5em;
   font-weight: 400;
   text-rendering: optimizeLegibility;
@@ -210,10 +210,10 @@ h6 {
   }
 }
 a {
-  color: #19efaf;
+  color: rgb(112.4632653061, 31.2326530612, 253.4673469388);
 }
 a.active, a:active, a:focus, a.hover, a:hover {
-  color: #00b17c;
+  color: #360192;
 }
 
 article,
@@ -236,7 +236,7 @@ details {
 }
 
 summary {
-  color: #696564;
+  color: rgb(105.2, 101, 99.6);
   display: list-item;
   margin: 1.5em 0 0;
 }
@@ -248,7 +248,7 @@ blockquote {
   margin: 3em;
   font-family: serif;
   font-style: italic;
-  font-size: 19.68px;
+  font-size: 22.14px;
   line-height: 1.5em;
 }
 
@@ -355,33 +355,33 @@ code,
 kbd,
 pre,
 samp {
-  background: #eae9e9;
+  background: rgb(233.6, 233, 232.8);
 }
 
 kbd {
-  color: #218968;
+  color: rgb(47.5, 18, 89.5);
   background: #292321;
   color: #FFF;
 }
 kbd::before {
   content: ">_ ";
-  color: #19efaf;
+  color: #360192;
 }
 
 samp {
-  color: #218968;
+  color: rgb(47.5, 18, 89.5);
 }
 samp::before {
   content: ">> ";
-  color: #19efaf;
+  color: #360192;
 }
 
 var {
-  color: #218968;
+  color: rgb(47.5, 18, 89.5);
 }
 
 mark {
-  background: #ffff26;
+  background: rgb(255, 255, 38.25);
 }
 
 pre {
@@ -398,7 +398,7 @@ pre {
 
 hr {
   border: none;
-  border-top: 1px solid #bfbdbc;
+  border-top: 1px solid rgb(190.8, 189, 188.4);
   box-sizing: content-box;
   height: 0;
   overflow: visible;
@@ -442,7 +442,7 @@ label {
 textarea,
 select {
   background: transparent;
-  border: 1px solid #bfbdbc;
+  border: 1px solid rgb(190.8, 189, 188.4);
   border-radius: 1px;
   color: #292321;
 }
@@ -514,7 +514,7 @@ select:focus {
 }
 
 output {
-  border-bottom: 1px solid #bfbdbc;
+  border-bottom: 1px solid rgb(190.8, 189, 188.4);
   vertical-align: bottom;
 }
 
@@ -536,9 +536,9 @@ input[type=submit] {
   border-radius: 100rem;
   border-style: solid;
   border-width: 1px;
-  background: #19efaf;
-  border-color: #19efaf;
-  color: white;
+  background: #FFF;
+  border-color: #360192;
+  color: #360192;
   padding-left: 1.4em;
   padding-right: 1.4em;
 }
@@ -558,9 +558,9 @@ input[type=submit]:active,
 input[type=submit].hover,
 input[type=submit]:hover,
 input[type=submit]:focus {
-  background: #00c68b;
-  border-color: #00c68b;
-  color: white;
+  background: #360192;
+  border-color: #360192;
+  color: #FFF;
 }
 
 button::-moz-focus-inner,
@@ -579,7 +579,7 @@ select:-moz-focusring {
 }
 
 fieldset {
-  border: 1px solid #bfbdbc;
+  border: 1px solid rgb(190.8, 189, 188.4);
   margin: 1.5em 0;
   padding: 0.35em 0.7em 0.7em;
   max-width: calc(100% - 1.4em);
@@ -599,7 +599,7 @@ fieldset {
 [type=radio] + label::before {
   box-sizing: border-box;
   background: #FFF;
-  border: 1px solid #bfbdbc;
+  border: 1px solid rgb(190.8, 189, 188.4);
   display: block;
   position: absolute;
   height: 1.3em;
@@ -611,8 +611,8 @@ fieldset {
 
 [type=checkbox]:checked + label::before,
 [type=radio]:checked + label::before {
-  border-color: #19efaf;
-  box-shadow: inset 0 0 0 0.3em #19efaf;
+  border-color: #360192;
+  box-shadow: inset 0 0 0 0.3em #360192;
 }
 
 [type=radio] + label::before {
@@ -644,7 +644,7 @@ table {
 
 tbody tr,
 tfoot tr {
-  border-top: 1px solid #bfbdbc;
+  border-top: 1px solid rgb(190.8, 189, 188.4);
 }
 
 th, td {
@@ -674,23 +674,23 @@ th, td {
 }
 
 ::-webkit-input-placeholder {
-  color: rgba(106, 106, 106, 0.5);
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(105.85, 105.85, 105.85, 0.5);
+  color: hsla(0, 0%, -12.4901960784%, 0.5);
 }
 
 ::-moz-placeholder {
-  color: rgba(106, 106, 106, 0.5);
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(105.85, 105.85, 105.85, 0.5);
+  color: hsla(0, 0%, -12.4901960784%, 0.5);
 }
 
 :-ms-input-placeholder {
-  color: rgba(106, 106, 106, 0.5);
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(105.85, 105.85, 105.85, 0.5);
+  color: hsla(0, 0%, -12.4901960784%, 0.5);
 }
 
 :-moz-placeholder {
-  color: rgba(106, 106, 106, 0.5);
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(105.85, 105.85, 105.85, 0.5);
+  color: hsla(0, 0%, -12.4901960784%, 0.5);
 }
 
 ::-webkit-selection {
