@@ -169,47 +169,60 @@
       </form>
       <form>
         <fieldset>
-          <legend>ajuste de alto de caja en distintos tipos de campos</legend>
-          <input aria-label="buscador" type="search" placeholder="search">
-          <input aria-label="numero" type="number" placeholder="number">
-          <select aria-label="selector">
-            <option disabled value="" selected>Select</option>
-            <option value="1">option 1</option>
-            <option value="2">option 2</option>
-            <optgroup label="Option Group">
-              <option value="3">group 1</option>
-              <option value="4">group 2</option>
+          <legend>ejemplo de distintos campos para ajustar el alto de las cajas</legend>
+          <input aria-label="introducir texto" type="text" placeholder="texto">
+          <input aria-label="introducir contraseña" type="password" placeholder="contraseña">
+          <input aria-label="introducir correo electrónico" type="email" placeholder="correo@electrónico">
+          <input aria-label="seleccion un archivo" type="file">
+          <input aria-label="buscador" type="search" placeholder="buscador">
+          <input aria-label="introducir un número" type="number" placeholder="números">
+          <input aria-label="introducir un teléfono" type="tel" placeholder="teléfono">
+          <input aria-label="introducir una url" type="url" placeholder="url">
+          <input aria-label="introducir una fecha" type="date">
+          <input aria-label="introducir una hora" type="time">
+          <input aria-label="introducir un color" type="color">
+          <select aria-label="seleccionar una opción">
+            <option disabled value="" selected>selecciona</option>
+            <option value="1">opción 1</option>
+            <option value="2">opción 2</option>
+            <optgroup label="grupo de opciones">
+              <option value="3">opción 1 del grupo</option>
+              <option value="4">opción 2 del grupo</option>
             </optgroup>
           </select>
-          <input type="file" aria-label="archivo" value="">
         </fieldset>
       </form>
       <form>
         <fieldset>
           <legend>otros campos</legend>
           <p>
-            <textarea name="name" rows="3" cols="33" placeholder="textarea"></textarea>
+            <label for="areadetexto">área de texto</label><br />
+            <textarea id="areadetexto" name="name" rows="3" cols="33"></textarea>
           </p>
           <p>
             <input id="checkbox1" type="checkbox" name="" value="1">
-            <label for="checkbox1">Checkbox</label>
+            <label for="checkbox1">casilla de verificación <i lang="en">checkbox</i></label>
           </p>
           <p>
             <input id="radio1" type="radio" name="radiomuestra" value="1">
-            <label for="radio1">Radio 1</label>
+            <label for="radio1">botón de radio 1</label>
             <input id="radio2" type="radio" name="radiomuestra" value="2">
-            <label for="radio2">Radio 2</label>
+            <label for="radio2">botón de radio 2</label>
+          </p>
+          <p>
+            <label for="rango">control deslizante <i lang="en">range</i></label>
+            <input id="rango" type="range" min="0" max="100" value="50">
           </p>
         </fieldset>
       </form>
       <form oninput="x.value=parseInt(a.value)+parseInt(b.value)" class="form-inline">
         <fieldset>
-          <legend>output</legend>
-          <input type="number" id="a" value="10">
-          <span>+</span>
-          <input type="number" id="b" value="50">
-          <span>=</span>
-          <output name="x" for="a b"></output>
+          <legend>el campo <i lang="en">output</i> puede mostrar el resultado de un cálculo</legend>
+          <input aria-label="primer numero" type="number" id="a" value="10">
+          +
+          <input aria-label="segundo numero" type="number" id="b" value="50">
+          =
+          <output arua-label="resultado" name="x" for="a b">60</output>
         </fieldset>
       </form>
     </section>
