@@ -1,72 +1,95 @@
-## mol normalize
-normalize css file a.k.a. para que se vean igual las etiquetas de html en todos los navegadores. tiene unas pocas variables para poder editar el estilo general como el color primario o la tipografía y media queries para cambiar el tamaño de los títulos.
+# mol normalize
 
-### scripts
-* para ver los cambios locales `npm start`
-* para actualizar el archivo de pruebas docs/n.css `npm run scss`
-* para obtener el archivo minificado mol/n.min.css `npm run mol`
+(≧ ▽ ≦)ノ weeeenaaaaaaas!!!
 
-### variables
-```text
-$m-font-family: sans-serif;
-$m-font-size: 16px;
-$m-font-weight: 400;
-$m-letter-spacing: normal;
-$m-line-height: 1.5em;
+este proyecto es para normalizar los elementos nativos de HTML entre distintos navegadores a la vez que sirve de base para proyectos pequeños.
 
-$m-code-family: monospace;
+se pueden configurar los estilos directamente con el uso de propiedades personalizadas (variables) de CSS, que actúan directamente sobre las etiquetas nativas sin necesidad de escribir ninguna clase a ningún elemento.
 
-$m-em-family: serif;
+y pesa tan solo 12 KB en disco!
 
-$m-h-family: sans-serif;
-$m-h-size: 23px;
-$m-h-height: 1em;
-$m-h-spacing: normal;
-$m-h-weight: 600;
-$m-h-style: normal;
-$m-h-transform: none;
+**llame ya!**
 
-$m-colors: (
-  "background": #FFF,
-  "font": #292321,
-  "primary": #19efaf
-);
+*( no llamen... nunca contesto )*
 
-$m-queries: (
-  "phone": (
-    "since": 320px,
-    "until": 767px,
-  ),
-  "tablet": (
-    "since": 768px,
-    "until": 1024px,
-  ),
-  "laptop": (
-    "since": 1025px,
-    "until": 1599.99px,
-  ),
-  "desktops": (
-    "since": 1600px,
-    "until": 99999px,
-  )
-);
+## uso
+
+＼(￣▽￣)／ no se necesita volver a compilar! 
+
+simplemente utiliza el archivo minificado y con las propiedades de CSS puedes variar el resultado tanto en modo claro como oscuro.
+
+### --variables-de-color
+
+solamente tiene tres variables de color, una para el fondo general, otra para el texto y un color primario para los elementos interactivos. Para que funcione correctamente, se requiere que tanto el texto como el color primario tengan suficiente contraste contra el fondo.
+
+los elementos que tienen color están mezclados con el color primario para darle homogeneidad a la paleta de tonalidades.
+
+```css
+  --m-color-texto: rgb(36, 26, 48);
+  --m-color-fondo: rgb(255, 255, 255);
+  --m-color-primario: rgb(94, 20, 222);
 ```
 
-### archivos
-```text
-mol-n/
-├── mol/
-│   ├── n.min.css
-│   └── n.min.css.map
-├── docs/
-│   ├── index.html
-│   ├── n.css
-│   └── n.css.map
-└── scss/
-    ├── _normalize.scss
-    ├── _vars.scss
-    └── n.scss
+### --variables-del-documento
+
+las variables del documento interactúan con múltiples etiquetas, es importante que para el tamaño de texto se utilicen en unidades absolutas, para el interlineado y el espaciado se requieren unidades relativas.
+
+```css
+  --m-documento-texto: 18px;
+  --m-documento-interlineado: 1.375em;
+  --m-documento-espaciado: 1rem;
 ```
 
-## problemas conocidos
-(//▽//) El input type search funciona como un input type text, para mantener el estilo general de los inputs
+### --variables-de-texto
+
+se pueden utilizar distintas familias tipográficas y estilos para el texto, títulos y código, pero es importante declarar el tamaño del texto para cada caso en unidades relativas.
+
+```css
+  --m-texto-tipografia: sans-serif;
+  --m-texto-peso: 400;
+  
+  --m-titulo-tipografia: sans-serif;
+  --m-titulo-tamanio: 1rem;
+  --m-titulo-interlineado: 1.25em;
+  --m-titulo-peso: 500;
+  --m-titulo-margen: 1.25em 0 0;
+
+  --m-codigo-tipografia: monospace;
+  --m-codigo-peso: 400;
+  --m-codigo-tamanio: 0.9em;
+  --m-codigo-espaciado: 0.025em;
+```
+
+### --variables-de-formularios
+
+por último, con estas variables se pueden configurar un poco los estilos en los formularios y elementos interactivos.
+
+```css
+  --m-formulario-borde-tamanio: 1px;
+  --m-formulario-borde-estilo: solid;
+  --m-formulario-redondeado: 3px;
+  --m-formulario-espaciado: var(--m-documento-espaciado);
+
+  --m-campo-altura: 44px;
+  --m-campo-borde-tamanio: 1px;
+  --m-campo-borde-estilo: solid;
+  --m-campo-espaciado: .5em;
+  --m-campo-redondeado: 3px;
+  
+  --m-boton-borde-tamanio: 0;
+  --m-boton-borde-estilo: solid;
+  --m-boton-espaciado: .5em 1em;
+  --m-boton-redondeado: 999rem;
+
+  --m-enfoque-borde-estilo: solid;
+  --m-enfoque-borde-tamanio: 4px;
+  --m-enfoque-espaciado: 2px;
+```
+
+## notas
+
+(っ´ω`)ﾉ(╥ω╥) los inputs de type range, checkbox y radio, se muestran tal cual los presenta cada navegador. No se alteró su estilo porque para lograr homologarlos es necesario el uso de otros elementos y/o tecnologías.
+
+## 
+
+ 	( . .)φ__  flkt.crnpio@gmail.com
