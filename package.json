@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "small normalize and customize file with sass preprocessor for css",
   "scripts": {
-    "start": "concurrently 'npm run reload' 'npm run scss' ",
-    "scss": "sass --watch scss/n.scss:docs/n.css --style expanded",
-    "mol": "sass scss/n.scss:mol/n.min.css --style compressed",
-    "reload": "reload --dir docs -b"
+    "dev": "concurrently 'npm run reload' 'npm run sass' ",
+    "sass": "sass --watch scss/n.scss:docs/n.css --style expanded",
+    "reload": "reload --dir docs -b",
+    "build": "sass scss/n.scss:mol/n.min.css --style compressed"
   },
   "nodemonConfig": {
     "watch": [
@@ -17,7 +17,6 @@
   },
   "files": [
     "mol",
-    "scss",
     "README.md"
   ],
   "repository": {
@@ -38,10 +37,8 @@
     "sass",
     "flkt"
   ],
-  "dependencies": {
-    "sass": "^1.83.0"
-  },
   "devDependencies": {
+    "sass": "^1.83.0",
     "concurrently": "^9.1.1",
     "reload": "^3.3.0"
   }
