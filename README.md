@@ -24,10 +24,22 @@ solamente tiene tres variables de color, una para el fondo general, otra para el
 
 los elementos que tienen color están mezclados con el color primario para darle homogeneidad a la paleta de tonalidades.
 
-```css
-  --m-color-texto: rgb(36, 26, 48);
-  --m-color-fondo: rgb(255, 255, 255);
-  --m-color-primario: rgb(94, 20, 222);
+```scss
+// variables css color tema oscuro
+:root {
+  --m-color-fondo: rgb(18, 14, 24);
+  --m-color-texto: rgb(255, 255, 255);
+  --m-color-primario: rgb(0, 255, 187);
+}
+
+// variables css color tema claro
+@media (prefers-color-scheme: light) {
+  :root {
+    --m-color-texto: rgb(18, 14, 24);
+    --m-color-fondo: rgb(255, 255, 255);
+    --m-color-primario: rgb(74, 34, 255);
+  }
+}
 ```
 
 ### --variables-del-documento
