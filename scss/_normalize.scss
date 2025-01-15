@@ -190,6 +190,15 @@ ol {
   padding-inline-start: var(--m-documento-espaciado);
 }
 
+caption {
+  margin-bottom: calc(var(--m-formulario-espaciado) / 2);
+}
+
+caption,
+th {
+  text-align: left;
+}
+
 fieldset {
   margin-block: 1em;
   margin-inline: 0;
