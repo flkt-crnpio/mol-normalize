@@ -5,60 +5,82 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="googlebot" content="noindex,nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@800&display=swap" rel="stylesheet">
   <title>mol-normalize</title>
   <link rel="stylesheet" href="n.css">
 </head>
 <style>
   .documentacion {
-    margin: 120px auto;
-    max-width: 800px;
+    margin: 40vh auto 10vh;
+    width: 90vw;
+    max-width: 70ch;
   }
   .separador {
-    margin-block: 120px;
+    margin-block: 10vh;
   }
 </style>
 
 <body>
   <main class="documentacion">
-    <h1 id="mol-normalize">
-      <a href="#mol-normalize">mol-normalize</a>
-    </h1>
+    <h1>mol-normalize</h1>
     <p>
       Este proyecto es para normalizar los elementos nativos de HTML entre distintos navegadores a la vez que sirve de base para proyectos pequeños.
     </p>
     <p>
-      Se pueden configurar los estilos directamente con el uso de propiedades personalizadas (variables) de CSS, que actúan directamente sobre las etiquetas nativas sin necesidad de escribir ninguna clase a ningún elemento.
+      Se pueden configurar los estilos con las propiedades personalizadas (variables) de CSS, que actúan directamente sobre las etiquetas nativas sin necesidad de escribir ninguna clase a ningún elemento.
+    </p>
+    <p>
+      Tiene algunas reglas que ayudan a la accesibilidad, como validaciones de tamaños de textos mínimos, uso de unidades relativas para que los navegadores se adapten al tamaño de texto que elija la persona usuaria, o los calculos de los colores que se efectuan automáticamente con solo definir el color principal.
     </p>
     <p>
       ¡Y pesa tan solo 12 KB en disco!
     </p>
 
-    <h2 id="uso">
-      <a href="#uso">uso</a>
-    </h2>
-    <p>
-      No se necesita volver a compilar. Simplemente utiliza el archivo minificado y con las propiedades de CSS puedes variar el resultado tanto en modo claro como oscuro.
-    </p>
-    <p>
-      Solamente tiene tres variables de color, una para el fondo general, otra para el texto y un color primario para los elementos interactivos. Para que funcione correctamente, se requiere que tanto el texto como el color primario tengan suficiente contraste contra el fondo.
-    </p>
-    <p>
-      Los elementos que tienen color están mezclados con el color primario para darle homogeneidad a la paleta de tonalidades.
-    </p>
-<pre>--m-color-texto: rgb(36, 26, 48);
---m-color-fondo: rgb(255, 255, 255);
---m-color-primario: rgb(94, 20, 222);</pre>
+    <br class="separador">
 
-    <p>
-      Las variables del documento interactúan con múltiples etiquetas, es importante que para el tamaño de texto se utilicen en unidades absolutas, para el interlineado y el espaciado se requieren unidades relativas.
-    </p>
+    <section aria-labelledby="uso">
+      <h2 id="uso">
+        <a href="#uso">#uso</a>
+      </h2>
+      <p>
+        No se necesita volver a compilar. Simplemente utiliza el archivo minificado y con las propiedades de CSS puedes variar el resultado tanto en modo claro como oscuro.
+      </p>
+      <p>
+        Solamente tiene tres variables de color, una para el fondo general, otra para el texto y un color primario para los elementos interactivos. Para que funcione correctamente, se requiere que tanto el texto como el color primario tengan suficiente contraste contra el fondo.
+      </p>
+      <p>
+        Los elementos que tienen color están mezclados con el color primario para darle homogeneidad a la paleta de tonalidades.
+      </p>
+<pre>
+// tema oscuro
+:root {
+  --m-color-fondo: rgb(18, 14, 24);
+  --m-color-texto: rgb(255, 255, 255);
+  --m-color-primario: rgb(0, 255, 187);
+}
+
+// tema claro
+@media (prefers-color-scheme: light) {
+  :root {
+    --m-color-texto: rgb(18, 14, 24);
+    --m-color-fondo: rgb(255, 255, 255);
+    --m-color-primario: rgb(0, 135, 9);
+  }
+}
+</pre>
+
+      <p>
+        Las variables del documento interactúan con múltiples etiquetas, es importante que para el tamaño de texto se utilicen en unidades absolutas, para el interlineado y el espaciado se requieren unidades relativas.
+      </p>
 <pre>--m-documento-texto: 18px;
 --m-documento-interlineado: 1.375em;
 --m-documento-espaciado: 1rem;</pre>
 
-    <p>
-      Se pueden utilizar distintas familias tipográficas y estilos para el texto, títulos y código, pero es importante declarar el tamaño del texto para cada caso en unidades relativas.
-    </p>
+      <p>
+        Se pueden utilizar distintas familias tipográficas y estilos para el texto, títulos y código, pero es importante declarar el tamaño del texto para cada caso en unidades relativas.
+      </p>
 <pre>--m-texto-tipografia: sans-serif;
 --m-texto-peso: 400;
 
@@ -73,9 +95,9 @@
 --m-codigo-tamanio: 0.9em;
 --m-codigo-espaciado: 0.025em;</pre>
 
-    <p>
-      Por último, con estas variables se pueden configurar un poco los estilos en los formularios y elementos interactivos.
-    </p>
+      <p>
+        Por último, con estas variables se pueden configurar un poco los estilos en los formularios y elementos interactivos.
+      </p>
 <pre>--m-formulario-borde-tamanio: 1px;
 --m-formulario-borde-estilo: solid;
 --m-formulario-redondeado: 3px;
@@ -95,89 +117,90 @@
 --m-enfoque-borde-estilo: solid;
 --m-enfoque-borde-tamanio: 4px;
 --m-enfoque-espaciado: 2px;</pre>
+    </section>
     
-    <hr class="separador">
+    <br class="separador">
     
     <section aria-labelledby="textos">
       <h2 id="textos">
-        <a href="#textos">textos</a>
+        <a href="#textos">#textos</a>
       </h2>
-      <h1>h1</h1>
-      <h2>h2</h2>
-      <h3>h3</h3>
-      <h4>h4</h4>
-      <h5>h5</h5>
-      <h6>h6</h6>
+      <h1>h1 título</h1>
+      <h2>h2 subtítulo</h2>
+      <h3>h3 subtítulo</h3>
+      <h4>h4 subtítulo</h4>
+      <h5>h5 subtítulo</h5>
+      <h6>h6 subtítulo</h6>
       <p>
-        parrafo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt lectus a pharetra sodales. Phasellus ullamcorper elementum metus, ut consectetur libero lobortis eget. Nam mattis eros in ante tristique dignissim. Mauris elementum tempus dolor, eu
+        p parrafo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt lectus a pharetra sodales. Phasellus ullamcorper elementum metus, ut consectetur libero lobortis eget. Nam mattis eros in ante tristique dignissim. Mauris elementum tempus dolor, eu
         luctus dolor consequat ac. Nullam et libero ac nibh rutrum faucibus quis gravida lectus.
       </p>
       <p>
-        texto <b>bold</b> negritas
-        texto <strong>strong</strong> importante
-        texto <i>i</i> italica
-        texto <em>em</em> enfatizar
-        texto <mark>mark</mark> remarcado
-        texto <abbr title='abbr title'>abbr</abbr> abreviaciones y acrónimos
-        texto <ins>ins</ins> insertado
-        texto <del>del</del> eliminado
-        texto <dfn>dfn</dfn> definición
-        texto <small>small</small> pequeño
-        texto <sub>sub</sub> subíndice
-        texto <sup>sup</sup> superíndice
-        texto <cite>cite</cite> cita
-        texto <q cite=''>q</q> cita breve
+        <b>bold</b> texto negritas<br>
+        <strong>strong</strong> texto importante<br>
+        <i>i</i> texto italica<br>
+        <em>em</em> texto enfatizar<br>
+        <mark>mark</mark> texto remarcado<br>
+        <abbr title='abbr title'>abbr</abbr> abreviaciones y acrónimos<br>
+        <ins>ins</ins> texto insertado<br>
+        <del>del</del> texto eliminado<br>
+        <dfn>dfn</dfn> definiciones<br>
+        <small>small</small> texto pequeño<br>
+        <sub>sub</sub> subíndice<br>
+        <sup>sup</sup> superíndice<br>
+        <cite>cite</cite> cita<br>
+        <q cite=''>q</q> cita breve<br>
       </p>
       <blockquote cite="http://es.lipsum.com/">
-        cita larga Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus velit nulla, scelerisque quis aliquam eget, rhoncus tincidunt lacus. Aliquam blandit est lacinia fringilla pulvinar. Morbi sodales eros leo, sed ultrices nunc rutrum et.
+        blockquote cita larga Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus velit nulla, scelerisque quis aliquam eget, rhoncus tincidunt lacus. Aliquam blandit est lacinia fringilla pulvinar. Morbi sodales eros leo, sed ultrices nunc rutrum et.
         Morbi at magna ante. Pellentesque tincidunt lectus a pharetra sodales.
       </blockquote>
-      <pre>texto preformateado</pre>
+      <pre>pre texto preformateado</pre>
       <p>
-        texto <code>code</code>
-        texto <kbd>kbd</kbd> <kbd>entrada</kbd> <kbd>de</kbd> <kbd>teclado</kbd>
-        texto <samp>samp</samp> muestra de salida
-        texto <var>var</var> variable
+        <code>code</code> texto de código<br>
+        <kbd>kbd</kbd> entrada de teclado<br>
+        <samp>samp</samp> muestra de salida<br>
+        <var>var</var> variable<br>
       </p>
     </section>
 
     <section aria-labelledby="enlaces">
       <h2 id="enlaces">
-        <a href="#enlaces">enlaces</a>
+        <a href="#enlaces">#enlaces</a>
       </h2>
       <p>
-        lorem ipsum <a href="#enlaces">enlace</a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#enlaces">enlace largo dentro de un texto largo para podervercomosecomportaeltextocuandolotienequeromperperonotieneespacioscomoenlasurllarguisimasdedocumentosyeso</a>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        lorem ipsum <a href="#enlaces">enlace pequeño</a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#enlaces">enlace largo dentro de un texto largo para podervercomosecomportaeltextocuandolotienequeromperperonotieneespacioscomoenlasurllarguisimasdedocumentosyeso</a>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </section>
 
     <section aria-labelledby="listas">
       <h2 id="listas">
-        <a href="#listas">listas</a>
+        <a href="#listas">#listas</a>
       </h2>
       <dl>
-        <dt>description list</dt>
-        <dd>dd description</dd>
-        <dt>dt term</dt>
-        <dd>dd description</dd>
+        <dt>dl lista de definiciones<br> dd término</dt>
+        <dd>dd descripción</dd>
+        <dt>dt término</dt>
+        <dd>dd descripción</dd>
       </dl>
       <ul>
-        <li>unordered list</li>
-        <li>li</li>
+        <li>ul lista desordenada</li>
+        <li>li elemento de lista</li>
         <li>
-          li
+          li elemento de lista
           <ul>
-            <li>ul li</li>
-            <li>li</li>
+            <li>ul lista anidada</li>
+            <li>li elemento de lista</li>
           </ul>
         </li>
       </ul>
       <ol>
-        <li>ordered list</li>
+        <li>ol lista ordenada</li>
         <li>
-          li
+          li elemento de lista
           <ol>
-            <li>ol li</li>
-            <li>li</li>
+            <li>ol lista anidada</li>
+            <li>li elemento de lista</li>
           </ol>
         </li>
       </ol>
@@ -185,59 +208,60 @@
 
     <section aria-labelledby="tablas">
       <h2 id="tablas">
-        <a href="#tablas">tablas</a>
+        <a href="#tablas">#tablas</a>
       </h2>
       <table>
-        <caption>titulo de la tabla</caption>
+        <caption>caption título de la tabla</caption>
         <tr>
           <td></td>
-          <th>titulos</th>
-          <th>nombres</th>
-          <th>variables</th>
+          <th>th titulos</th>
+          <th>th nombres</th>
+          <th>th variables</th>
         </tr>
         <tr>
-          <th>otra variable</th>
-          <td>valores de las variables</td>
-          <td>valores de las variables</td>
-          <td>valores de las variables</td>
+          <th>th otra variable</th>
+          <td>td valores de las variables</td>
+          <td>td valores de las variables</td>
+          <td>td valores de las variables</td>
         </tr>
         <tr>
-          <th>otra variable</th>
-          <td>definiciones de los nombres</td>
-          <td>definiciones de los nombres</td>
-          <td>definiciones de los nombres</td>
+          <th>th otra variable</th>
+          <td>td definiciones de los nombres</td>
+          <td>td definiciones de los nombres</td>
+          <td>td definiciones de los nombres</td>
         </tr>
       </table>
     </section>
 
     <section aria-labelledby="contenedores">
       <h2 id="contenedores">
-        <a href="#contenedores">contenedores</a>
+        <a href="#contenedores">#contenedores</a>
       </h2>
       <details>
-        <summary>Details Summary</summary>
-        <p>Details content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        <summary>details summary. Colapsables</summary>
+        <p>Cualquier otro contenido dentro de details, después del summary. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </details>
       <figure>
         <img src="./img.jpg" alt="img" width="242px" height="320px">
-        <figcaption>figure.- figcaption</figcaption>
+        <span>figure</span>
+        <figcaption>figcaption. Descripción del contenido dentro de figure.</figcaption>
       </figure>
     </section>
 
     <section aria-labelledby="formularios">
       <h2 id="formularios">
-        <a href="#formularios">formularios</a>
+        <a href="#formularios">#formularios</a>
       </h2>
       <form>
         <fieldset>
           <legend>estados de campos</legend>
           <label for="tipo-texto">campo texto</label>
-          <input id="tipo-texto" type="text" placeholder="text">
+          <input id="tipo-texto" type="text" placeholder="input text">
           <label for="estado-deshabilitado">deshabilitado</label>
-          <input id="estado-deshabilitado" type="text" disabled placeholder="disabled">
+          <input id="estado-deshabilitado" type="text" disabled placeholder="input disabled">
           <label for="estado-lectura">solo lectura</label>
-          <input id="estado-lectura" type="text" readonly placeholder="readonly">
+          <input id="estado-lectura" type="text" readonly placeholder="input readonly">
         </fieldset>
       </form>
       <form>
