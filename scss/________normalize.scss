@@ -106,7 +106,7 @@ samp {
 }
 
 mark {
-  --m-bloque-fondo: color-mix(in srgb, color-mix(in srgb, yellow 90%, var(--m-color-primario)) 70%, var(--m-color-fondo));
+  --m-bloque-fondo: color-mix(in srgb, color-mix(in srgb, yellow 90%, var(--m-color-primario)) 60%, var(--m-color-fondo));
   --m-bloque-texto: var(--m-color-texto);
 }
 
@@ -150,6 +150,11 @@ a {
   }
 }
 
+details {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
 a,
 summary {
   border-radius: 1px;
@@ -188,6 +193,15 @@ dd {
 ul,
 ol {
   padding-inline-start: var(--m-documento-espaciado);
+}
+
+caption {
+  margin-bottom: 0.5em;
+}
+
+caption,
+th {
+  text-align: left;
 }
 
 fieldset {
@@ -261,13 +275,7 @@ input[type='button'],
 input[type='reset'],
 input[type='submit'],
 ::file-selector-button {
-  padding: var(--m-boton-espaciado);
-  border-width: var(--m-boton-borde-tamanio, 0);
-  border-style: var(--m-boton-borde-estilo, solid);
-  border-radius: var(--m-boton-redondeado, 3px);
-  border-color: var(--m-boton-borde-color);
-  background: var(--m-boton-fondo-color);
-  color: var(--m-boton-texto-color);
+  @include mix.ui-boton;
   --m-boton-borde-color: var(--m-color-primario);
   --m-boton-fondo-color: var(--m-color-primario);
   --m-boton-texto-color: var(--m-color-fondo);
@@ -294,12 +302,7 @@ textarea {
 input:not([type='checkbox'], [type='radio'], [type='range'], [type='button'], [type='submit'], [type='reset']),
 select,
 textarea {
-  border-width: var(--m-campo-borde-tamanio, 1px);
-  border-style: var(--m-campo-borde-estilo, solid);
-  border-radius: var(--m-campo-redondeado, 3px);
-  border-color: var(--m-campo-borde-color);
-  background: var(--m-campo-fondo-color);
-  color: var(--m-campo-texto-color);
+  @include mix.ui-campo;
   --m-campo-borde-color: color-mix(in srgb, currentColor 40%, transparent);
   --m-campo-fondo-color: var(--m-color-fondo);
   &:disabled {

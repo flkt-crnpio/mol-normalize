@@ -32,28 +32,23 @@ caption {
 }
 
 h1 {
-  font-size: calc(var(--m-titulo-tamanio, 1.25rem) * 3);
+  --m-titulo-tamanio: 3rem;
 }
 
 h2 {
-  font-size: calc(var(--m-titulo-tamanio, 1.25rem) * 2.65);
+  --m-titulo-tamanio: 2.65rem;
 }
 
 h3 {
-  font-size: calc(var(--m-titulo-tamanio, 1.25rem) * 2.15);
+  --m-titulo-tamanio: 2.15rem;
 }
 
 h4 {
-  font-size: calc(var(--m-titulo-tamanio, 1.25rem) * 1.75);
+  --m-titulo-tamanio: 1.75rem;
 }
 
 h5 {
-  font-size: calc(var(--m-titulo-tamanio, 1.25rem) * 1.5);
-}
-
-h6,
-caption {
-  font-size: var(--m-titulo-tamanio, 1.25rem);
+  --m-titulo-tamanio: 1.5rem;
 }
 
 b,

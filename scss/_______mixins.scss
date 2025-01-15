@@ -1,0 +1,60 @@
+@mixin ui-texto {
+  font-family: var(--m-texto-tipografia, sans-serif);
+  font-weight: var(--m-texto-peso, 400);
+  font-size: max(1rem, 12px);
+  line-height: max(var(--m-documento-interlineado, 1.5rem), 18px);
+}
+
+@mixin ui-titulo {
+  font-family: var(--m-titulo-tipografia, sans-serif);
+  font-weight: var(--m-titulo-peso, 500);
+  line-height: max(var(--m-titulo-interlineado, 1.25em), 18px);
+  margin: var(--m-titulo-margen, 1.25em 0 0);
+}
+
+@mixin ui-codigo {
+  font-family: var(--m-codigo-tipografia, monospace);
+  font-weight: var(--m-codigo-peso, 400);
+  font-size: max(var(--m-codigo-tamanio), 12px);
+  line-height: max(inherit, 18px);
+}
+
+@mixin ui-bloque {
+  background-color: var(--m-bloque-fondo);
+  color: var(--m-bloque-texto);
+  border-radius: var(--m-bloque-redondeado, 3px);
+  padding: var(--m-bloque-espaciado, 0.125em 0.25em);
+}
+
+@mixin ui-boton {
+  padding: var(--m-boton-espaciado, .5em 1em);
+  border-width: var(--m-boton-borde-tamanio, 0);
+  border-style: var(--m-boton-borde-estilo, solid);
+  border-radius: var(--m-boton-redondeado, 3px);
+  border-color: var(--m-boton-borde-color);
+  background: var(--m-boton-fondo-color);
+  color: var(--m-boton-texto-color);
+}
+
+@mixin ui-campo {
+  border-width: var(--m-campo-borde-tamanio, 1px);
+  border-style: var(--m-campo-borde-estilo, solid);
+  border-radius: var(--m-campo-redondeado, 3px);
+  border-color: var(--m-campo-borde-color);
+  background: var(--m-campo-fondo-color);
+  color: var(--m-campo-texto-color);
+}
+
+@mixin ui-enfocable {
+  outline-color: var(--m-enfoque-borde-color, #03f);
+  outline-width: var(--m-enfoque-borde-tamanio, 3px);
+  outline-style: var(--m-enfoque-borde-estilo, solid);
+  outline-offset: var(--m-enfoque-espaciado, 0);
+  transition: all .27s ease-in-out;
+}
+
+@mixin ux-interactivo {
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all .27s ease-in-out;
+}
