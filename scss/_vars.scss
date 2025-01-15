@@ -1,42 +1,43 @@
-$m-font-family: sans-serif;
-$m-font-size: 18px;
-$m-font-weight: 400;
-$m-letter-spacing: normal;
-$m-line-height: 1.5em;
+:root {
+  --m-color-texto: rgb(36, 26, 48);
+  --m-color-fondo: rgb(255, 255, 255);
+  --m-color-primario: rgb(94, 20, 222);
 
-$m-code-family: monospace;
+  --m-documento-texto: 18px;
+  --m-documento-interlineado: 1.375em;
+  --m-documento-espaciado: 1rem;
 
-$m-em-family: serif;
+  --m-texto-tipografia: sans-serif;
+  --m-texto-peso: 400;
+  
+  --m-titulo-tipografia: sans-serif;
+  --m-titulo-tamanio: 1rem;
+  --m-titulo-interlineado: 1.25em;
+  --m-titulo-peso: 500;
+  --m-titulo-margen: 1.25em 0 0;
 
-$m-h-family: sans-serif;
-$m-h-size: 23px;
-$m-h-height: 1em;
-$m-h-spacing: normal;
-$m-h-weight: 600;
-$m-h-style: normal;
-$m-h-transform: none;
+  --m-codigo-tipografia: monospace;
+  --m-codigo-peso: 400;
+  --m-codigo-tamanio: 0.9em;
+  --m-codigo-espaciado: 0.025em;
 
-$m-colors: (
-  "background": #FFF,
-  "font": #292321,
-  "primary": #360192
-);
+  --m-formulario-borde-tamanio: 1px;
+  --m-formulario-borde-estilo: solid;
+  --m-formulario-redondeado: 3px;
+  --m-formulario-espaciado: var(--m-documento-espaciado);
 
-$m-queries: (
-  "phone": (
-    "since": 320px,
-    "until": 767px,
-  ),
-  "tablet": (
-    "since": 768px,
-    "until": 1024px,
-  ),
-  "laptop": (
-    "since": 1025px,
-    "until": 1599.99px,
-  ),
-  "desktop": (
-    "since": 1600px,
-    "until": 99999px,
-  )
-);
+  --m-campo-altura: 44px;
+  --m-campo-borde-tamanio: 1px;
+  --m-campo-borde-estilo: solid;
+  --m-campo-espaciado: .5em;
+  --m-campo-redondeado: 3px;
+  
+  --m-boton-borde-tamanio: 0;
+  --m-boton-borde-estilo: solid;
+  --m-boton-espaciado: .5em 1em;
+  --m-boton-redondeado: 999rem;
+
+  --m-enfoque-borde-estilo: solid;
+  --m-enfoque-borde-tamanio: 4px;
+  --m-enfoque-espaciado: 2px;
+}
