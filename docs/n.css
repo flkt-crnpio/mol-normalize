@@ -6,7 +6,7 @@
   --m-texto-peso: 400;
   --m-titulo-tipografia: "Funnel Display", serif;
   --m-titulo-tamanio: 1.25rem;
-  --m-titulo-interlineado: 1em;
+  --m-titulo-interlineado: 1.25em;
   --m-titulo-peso: 800;
   --m-titulo-margen: 1.25em 0 0;
   --m-codigo-tipografia: monospace;
@@ -71,11 +71,9 @@ h2,
 h3,
 h4,
 h5,
-h6,
-caption {
+h6 {
   font-family: var(--m-titulo-tipografia, sans-serif);
   font-weight: var(--m-titulo-peso, 500);
-  font-size: var(--m-titulo-tamanio, 1.25rem);
   line-height: max(var(--m-titulo-interlineado, 1.25em), 18px);
   margin: var(--m-titulo-margen, 1.25em 0 0);
 }
@@ -100,8 +98,7 @@ h5 {
   font-size: calc(var(--m-titulo-tamanio, 1.25rem) * 1.5);
 }
 
-h6,
-caption {
+h6 {
   font-size: var(--m-titulo-tamanio, 1.25rem);
 }
 
@@ -243,7 +240,12 @@ ol {
 }
 
 caption {
-  margin-bottom: calc(var(--m-formulario-espaciado) / 2);
+  font-family: var(--m-titulo-tipografia, sans-serif);
+  font-weight: var(--m-titulo-peso, 500);
+  line-height: max(var(--m-titulo-interlineado, 1.25em), 18px);
+  margin: var(--m-titulo-margen, 1.25em 0 0);
+  font-size: var(--m-titulo-tamanio, 1.25rem);
+  --m-titulo-margen: 1em 0 calc(var(--m-formulario-espaciado) / 2);
 }
 
 caption,
