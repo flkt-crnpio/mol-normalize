@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@800&display=swap" rel="stylesheet">
   <title>mol-normalize</title>
-  <link rel="stylesheet" href="n.css">
+  <link rel="stylesheet" href="vars.css">
+  <link rel="stylesheet" href="normalize.css">
 </head>
 <style>
   .documentacion {
@@ -22,21 +23,29 @@
   }
 </style>
 
-<body>
+<body lang="es-mx">
   <main class="documentacion">
-    <h1>mol-normalize</h1>
-    <p>
-      Este proyecto es para normalizar los elementos nativos de HTML entre distintos navegadores a la vez que sirve de base para proyectos pequeños.
-    </p>
-    <p>
-      Se pueden configurar los estilos con las propiedades personalizadas (variables) de CSS, que actúan directamente sobre las etiquetas nativas sin necesidad de escribir ninguna clase a ningún elemento.
-    </p>
-    <p>
-      Tiene algunas reglas que ayudan a la accesibilidad, como validaciones de tamaños de textos mínimos, uso de unidades relativas para que los navegadores se adapten al tamaño de texto que elija la persona usuaria, o los calculos de los colores que se efectuan automáticamente con solo definir el color principal.
-    </p>
-    <p>
-      ¡Y pesa tan solo 12 KB en disco!
-    </p>
+    <h1 id="descripcion">
+      <a href="#descripcion">#mol-normalize</a>
+    </h1>
+    <h2>
+      normaliza las etiquetas nativas de HTML
+    </h2>
+    <a href="https://github.com/flkt-crnpio/mol-normalize">visita el github del proyecto</a>
+    
+    <br class="separador">
+    
+    <h2>
+      el <code>init</code> de proyectos web
+    </h2>
+    <ul>
+      <li>se pueden configurar los estilos directamente con el uso de propiedades personalizadas (variables) de CSS</li>
+      <li>actúa directamente sobre las etiquetas nativas, homologandolo todo y ahorrandote escribir clases y ids</li>
+      <li>tiene reglas tipográficas básicas para ayudar a la legibilidad y la accesibilidad</li>
+      <li>calcula el color de estados :hover y :focus de los elementos interactivos en base al color primario declarado</li>
+      <li>pesa tan solo 9 KB en disco</li>
+      <li>¡y no se necesita volver a compilar!</li>
+    </ul>
 
     <br class="separador">
 
@@ -45,95 +54,25 @@
         <a href="#uso">#uso</a>
       </h2>
       <p>
-        No se necesita volver a compilar. Simplemente utiliza el archivo minificado y con las propiedades de CSS puedes variar el resultado tanto en modo claro como oscuro.
+        simplemente utiliza el archivo minificado que puedes encontrar en <code>mol/normalize.min.css</code> y si necesitas cambiar un color, una tipografía o algun tamaño, crea un archivo de variables para que sobreescribas el valor de la propiedad
       </p>
-      <p>
-        Solamente tiene tres variables de color, una para el fondo general, otra para el texto y un color primario para los elementos interactivos. Para que funcione correctamente, se requiere que tanto el texto como el color primario tengan suficiente contraste contra el fondo.
-      </p>
-      <p>
-        Los elementos que tienen color están mezclados con el color primario para darle homogeneidad a la paleta de tonalidades.
-      </p>
-<pre>
-// tema oscuro
-:root {
-  --m-color-fondo: rgb(18, 14, 24);
-  --m-color-texto: rgb(255, 255, 255);
-  --m-color-primario: rgb(0, 255, 187);
-}
-
-// tema claro
-@media (prefers-color-scheme: light) {
-  :root {
-    --m-color-texto: rgb(18, 14, 24);
-    --m-color-fondo: rgb(255, 255, 255);
-    --m-color-primario: rgb(0, 135, 9);
-  }
-}
-</pre>
-
-      <p>
-        Las variables del documento interactúan con múltiples etiquetas, es importante que para el tamaño de texto se utilicen en unidades absolutas, para el interlineado y el espaciado se requieren unidades relativas.
-      </p>
-<pre>--m-documento-texto: 18px;
---m-documento-interlineado: 1.375em;
---m-documento-espaciado: 1rem;</pre>
-
-      <p>
-        Se pueden utilizar distintas familias tipográficas y estilos para el texto, títulos y código, pero es importante declarar el tamaño del texto para cada caso en unidades relativas.
-      </p>
-<pre>--m-texto-tipografia: sans-serif;
---m-texto-peso: 400;
-
---m-titulo-tipografia: sans-serif;
---m-titulo-tamanio: 1rem;
---m-titulo-interlineado: 1.25em;
---m-titulo-peso: 500;
---m-titulo-margen: 1.25em 0 0;
-
---m-codigo-tipografia: monospace;
---m-codigo-peso: 400;
---m-codigo-tamanio: 0.9em;
---m-codigo-espaciado: 0.025em;</pre>
-
-      <p>
-        Por último, con estas variables se pueden configurar un poco los estilos en los formularios y elementos interactivos.
-      </p>
-<pre>--m-formulario-borde-tamanio: 1px;
---m-formulario-borde-estilo: solid;
---m-formulario-redondeado: 3px;
---m-formulario-espaciado: var(--m-documento-espaciado);
-
---m-campo-altura: 44px;
---m-campo-borde-tamanio: 1px;
---m-campo-borde-estilo: solid;
---m-campo-espaciado: .5em;
---m-campo-redondeado: 3px;
-
---m-boton-borde-tamanio: 0;
---m-boton-borde-estilo: solid;
---m-boton-espaciado: .5em 1em;
---m-boton-redondeado: 999rem;
-
---m-enfoque-borde-estilo: solid;
---m-enfoque-borde-tamanio: 4px;
---m-enfoque-espaciado: 2px;</pre>
     </section>
     
     <br class="separador">
     
-    <section aria-labelledby="textos">
-      <h2 id="textos">
-        <a href="#textos">#textos</a>
+    <section aria-labelledby="muestra">
+      <h2 id="muestra">
+        <a href="#muestra">#muestra</a>
       </h2>
+      <p>a.k.a. así se ven las etiquetas:</p>
       <h1>h1 título</h1>
       <h2>h2 subtítulo</h2>
-      <h3>h3 subtítulo</h3>
-      <h4>h4 subtítulo</h4>
-      <h5>h5 subtítulo</h5>
-      <h6>h6 subtítulo</h6>
+      <h3>h3 subsubtítulo</h3>
+      <h4>h4 subsubsubtítulo</h4>
+      <h5>h5 subsubsubsubtítulo</h5>
+      <h6>h6 subsubsubsubsubtítulo</h6>
       <p>
-        p parrafo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt lectus a pharetra sodales. Phasellus ullamcorper elementum metus, ut consectetur libero lobortis eget. Nam mattis eros in ante tristique dignissim. Mauris elementum tempus dolor, eu
-        luctus dolor consequat ac. Nullam et libero ac nibh rutrum faucibus quis gravida lectus.
+        p parrafo de ejemplo que no diga lorem ipsum porque ya chole con ese texto. además para decir cualquier tontería ni nos necesitan pagar, lo hacemos de gusto  
       </p>
       <p>
         <b>bold</b> texto negritas<br>
@@ -152,8 +91,7 @@
         <q cite=''>q</q> cita breve<br>
       </p>
       <blockquote cite="http://es.lipsum.com/">
-        blockquote cita larga Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus velit nulla, scelerisque quis aliquam eget, rhoncus tincidunt lacus. Aliquam blandit est lacinia fringilla pulvinar. Morbi sodales eros leo, sed ultrices nunc rutrum et.
-        Morbi at magna ante. Pellentesque tincidunt lectus a pharetra sodales.
+        blockquote cita larga . aqui tambien debe haber un texto de al menos dos parrafos para que se vea ademas el interlineado, que es igual que el del párrafo, pero bueno, es mejor ver todo claro clarisimo aunque sea repetitivo
       </blockquote>
       <pre>pre texto preformateado</pre>
       <p>
@@ -162,21 +100,11 @@
         <samp>samp</samp> muestra de salida<br>
         <var>var</var> variable<br>
       </p>
-    </section>
-
-    <section aria-labelledby="enlaces">
-      <h2 id="enlaces">
-        <a href="#enlaces">#enlaces</a>
-      </h2>
+    
       <p>
-        lorem ipsum <a href="#enlaces">enlace pequeño</a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#enlaces">enlace largo dentro de un texto largo para podervercomosecomportaeltextocuandolotienequeromperperonotieneespacioscomoenlasurllarguisimasdedocumentosyeso</a>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        este es un <a href="#">enlace pequeño</a> dentro de un párrafo. y para ver el enlace largo dentro de un texto, como para referencias de documentos.. vale la pena poner una palabra larga aunque no exsta como <a href="#">haslidufyalisudfyalisudghfalskdhflaksjdhflaksjdhflaisudfyliasudfalsjkdfglasjdfliuasgdfiuaysgdwiuyegriwjdbciauehfawñiejbgrliawudgcsilas</a>, que bueno, se separa en lineas pero ese hueco que queda... mmm.. no se, no se 
       </p>
-    </section>
 
-    <section aria-labelledby="listas">
-      <h2 id="listas">
-        <a href="#listas">#listas</a>
-      </h2>
       <dl>
         <dt>dl lista de definiciones<br> dd término</dt>
         <dd>dd descripción</dd>
@@ -204,39 +132,26 @@
           </ol>
         </li>
       </ol>
-    </section>
-
-    <section aria-labelledby="tablas">
-      <h2 id="tablas">
-        <a href="#tablas">#tablas</a>
-      </h2>
+    
       <table>
         <caption>caption título de la tabla</caption>
         <tr>
           <td></td>
           <th>th títulos</th>
           <th>th nombres</th>
-          <th>th variables</th>
         </tr>
         <tr>
           <th>th otra variable</th>
           <td>td valores de las variables</td>
           <td>td valores de las variables</td>
-          <td>td valores de las variables</td>
         </tr>
         <tr>
           <th>th otra variable</th>
-          <td>td definiciones de los nombres</td>
           <td>td definiciones de los nombres</td>
           <td>td definiciones de los nombres</td>
         </tr>
       </table>
-    </section>
-
-    <section aria-labelledby="contenedores">
-      <h2 id="contenedores">
-        <a href="#contenedores">#contenedores</a>
-      </h2>
+    
       <details>
         <summary>details summary. Colapsables</summary>
         <p>Cualquier otro contenido dentro de details, después del summary. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -254,18 +169,11 @@
         </ul>
       </details>
       <figure>
-        <h3>figure</h3>
-        <img src="./esparragus.jpg" alt="img" width="320px" height="427px">
-        <img src="./esparragus2.jpg" alt="img" width="320px" height="426px">
+        <img src="./esparragus.jpg" alt="perrito tomando agua de su platito en un cuarto con plantas y luz cálida natural" width="320px" height="427px">
+        <img src="./esparragus2.jpg" alt="perrito rodeado de pasto mirando al cielo con actitud tranquila, feliz" width="320px" height="426px">
         <figcaption>figcaption. Descripción del contenido dentro de figure.</figcaption>
       </figure>
       
-    </section>
-
-    <section aria-labelledby="formularios">
-      <h2 id="formularios">
-        <a href="#formularios">#formularios</a>
-      </h2>
       <form>
         <fieldset>
           <legend>estados de campos</legend>
@@ -288,35 +196,36 @@
       </form>
       <form>
         <fieldset>
-          <legend>ejemplo de distintos campos para ajustar el alto de las cajas</legend>
-          <input aria-label="introducir texto" type="text" placeholder="texto">
-          <input aria-label="introducir contraseña" type="password" placeholder="contraseña">
-          <input aria-label="introducir correo electrónico" type="email" placeholder="correo@electrónico">
-          <input aria-label="seleccion un archivo" type="file">
-          <input aria-label="buscador" type="search" placeholder="buscador">
-          <input aria-label="introducir un número" type="number" placeholder="números">
-          <input aria-label="introducir un teléfono" type="tel" placeholder="teléfono">
-          <input aria-label="introducir una url" type="url" placeholder="url">
-          <input aria-label="introducir una fecha" type="date">
-          <input aria-label="introducir una hora" type="time">
-          <input aria-label="introducir un color" type="color" value="#0000ff">
-          <select aria-label="seleccionar una opción">
-            <option disabled value="" selected>selecciona</option>
-            <option value="1">opción 1</option>
-            <option value="2">opción 2</option>
-            <optgroup label="grupo de opciones">
-              <option value="3">opción 1 del grupo</option>
-              <option value="4">opción 2 del grupo</option>
-            </optgroup>
-          </select>
-        </fieldset>
-      </form>
-      <form>
-        <fieldset>
-          <legend>otros campos</legend>
+          <legend>tipos de campos comunes</legend>
+          <p>
+            <input aria-label="introducir texto" type="text" placeholder="texto">
+            <input aria-label="introducir contraseña" type="password" placeholder="contraseña">
+            <input aria-label="introducir correo electrónico" type="email" placeholder="correo@electrónico">
+            <input aria-label="buscador" type="search" placeholder="buscador">
+            <input aria-label="introducir un número" type="number" placeholder="números">
+            <input aria-label="introducir un teléfono" type="tel" placeholder="teléfono">
+            <input aria-label="introducir una url" type="url" placeholder="url">
+            <input aria-label="introducir una fecha" type="date">
+            <input aria-label="introducir una hora" type="time">
+            <input aria-label="introducir un color" type="color" value="#0000ff">
+          </p>
+          <p>
+            <select aria-label="seleccionar una opción">
+              <option disabled value="" selected>selector</option>
+              <option value="1">opción 1</option>
+              <option value="2">opción 2</option>
+              <optgroup label="grupo de opciones">
+                <option value="3">opción 1 del grupo</option>
+                <option value="4">opción 2 del grupo</option>
+              </optgroup>
+            </select>
+          </p>
+          <p>
+            <input aria-label="seleccion un archivo" type="file">
+          </p>
           <p>
             <label for="areadetexto">área de texto</label><br />
-            <textarea id="areadetexto" name="name" rows="3" cols="33"></textarea>
+            <textarea id="areadetexto" name="name" rows="3" ></textarea>
           </p>
           <p>
             <input id="checkbox1" type="checkbox" name="" value="1">
