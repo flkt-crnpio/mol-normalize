@@ -1,45 +1,43 @@
 {
   "name": "mol-normalize",
-  "version": "2.1.0",
-  "description": "small normalize and customize file with sass preprocessor for css",
-  "scripts": {
-    "dev": "concurrently 'npm run reload' 'npm run sass' ",
-    "sass": "sass --watch scss/n.scss:docs/n.css --style expanded",
-    "reload": "reload --dir docs -b",
-    "build": "sass scss/n.scss:mol/n.min.css --style compressed"
-  },
-  "nodemonConfig": {
-    "watch": [
-      "scss/*",
-      "docs/*"
-    ],
-    "ext": "js,css,html"
-  },
-  "files": [
-    "mol",
-    "README.md"
-  ],
+  "version": "3.0.0",
+  "author": "flkt.crnpio@gmail.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flkt-crnpio/mol-normalize"
   },
-  "author": "flkt.crnpio@gmail.com",
-  "license": "MIT",
+  "main": "mol/normalize.min.css",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "sass": "^1.97.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
   "bugs": {
     "url": "https://github.com/flkt-crnpio/mol-normalize/issues"
   },
+  "description": "normalized file customizable by css vars",
+  "files": [
+    "mol",
+    "README.md"
+  ],
   "homepage": "https://flkt-crnpio.github.io/mol-normalize/",
-  "main": "mol/n.min.css",
   "keywords": [
+    "mol-normalize",
     "normalize",
     "css",
     "scss",
     "sass",
+    "bun",
     "flkt"
   ],
-  "devDependencies": {
-    "concurrently": "9.2.1",
-    "reload": "3.4.2",
-    "sass": "1.97.3"
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun run vars & bun run normalize & bun run serve",
+    "serve": "bun --watch run docs/index.html",
+    "normalize": "sass --watch scss/normalize.scss:docs/normalize.css --style expanded",
+    "vars": "sass --watch scss/_vars.scss:docs/vars.css --style expanded",
+    "build": "sass scss/normalize.scss:mol/normalize.min.css --style compressed"
   }
 }
