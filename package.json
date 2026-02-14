@@ -34,10 +34,9 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev": "bun run vars & bun run normalize & bun run serve",
+    "dev": "bun run normalize & bun run serve",
     "serve": "bun --watch run docs/index.html",
     "normalize": "sass --watch scss/normalize.scss:docs/normalize.css --style expanded",
-    "vars": "sass --watch scss/_vars.scss:docs/vars.css --style expanded",
     "build": "sass scss/normalize.scss:mol/normalize.min.css --style compressed"
   }
 }
